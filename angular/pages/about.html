@@ -1,0 +1,16 @@
+<div class="jumbotron text-center">
+    <h1>About Page</h1>
+
+    <p>{{ message }}</p>
+</div>
+
+<ul>
+    <li ng-repeat='user in main.users'>
+        {{ user.name }}
+    </li>
+</ul>
+<button ng-click='previousPage()'>Previous</button>
+<button ng-click='nextPage()'>Next</button>
+<br />
+{{main.page}} of {{ main.pages }}
+

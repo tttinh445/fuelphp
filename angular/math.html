@@ -1,0 +1,18 @@
+<!doctype html>
+<html ng-app="Math">
+    <head>
+        <meta charset="utf-8" />
+        <script src="js/angular.min.js"></script>
+        <script src="js/math.js"></script>
+    </head>
+    <body>
+        <div ng-controller="MathController" >
+            <label>Name:</label>
+            <input type="text" ng-model="soa" placeholder="Nhập số a">
+            <input type="text" ng-model="sob" placeholder="Nhập số b">
+            <hr>            
+            <input type="button" value="Cộng 2 số" ng-click="Calculate()" />
+            <h1>Tổng 2 số: {{total}}</h1>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+    <head>
+        <script src="js/angular.min.js"></script>  
+         <style>
+            input {
+                -webkit-transition:all linear 0.5s;
+                transition:all linear 0.5s;
+                background: transparent;
+            }
+            input.ng-invalid {
+                color:white;
+                background: red;
+            }
+        </style>
+
+         <script type="text/javascript">
+           angular.module('myApp', [])
+           .controller('controller', function($scope){
+            $scope.message = {};
+            $scope.message.title = "Tro choi cong So";
+            $scope.message.titles1 = "So thu nhat";
+            $scope.message.titles2 = "So thu hai";
+            $scope.styleresult = "display: none"
+
+            $scope.show_result = function(){
+              if($scope.form.$valid)
+              {
+                $scope.styleresult = "display: inline-block";
+                $scope.message.phepcong = "Phep cong";
+                $scope.message.pheptru = "Phep tru";
+                $scope.result = {};
+                $scope.result.cong = parseInt($scope.s1) + parseInt($scope.s2);
+                $scope.result.tru = parseInt($scope.s1) - parseInt($scope.s2);
+              }
+              else
+              {
+                 $scope.styleresult = "display: none";
+              }
+              
+            }
+
+              $scope.sayHello = function(){
+                $scope.greeting = "Xin chao "+ $scope.name + "!";
+              }
+           });
+        </script>
+    </head>
+   <body ng-app="myApp">
+        <div >
+          <form name="form" ng-controller="controller">
+             <h1> {{message.title}}</h1>
+             {{message.titles1}}: <input ng-model="s1" ng-required="true" ng-pattern="/^[0-9]+$/" ng-keyup="show_result()"/>
+             <br/>
+             <br/>
+              {{message.titles2}}: <input ng-model="s2" ng-required="true" ng-pattern="/^[0-9]+$/" ng-keyup="show_result()"/>
+ <br/>
+             <br/>
+              <div style="{{styleresult}}">
+                {{message.phepcong}}: {{result.cong}}
+                {{message.pheptru}}: {{result.tru}}
+              </div>
+          </form>
+          
+        </div>
+    </body>
+</html>
+
+

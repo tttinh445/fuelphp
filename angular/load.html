@@ -1,0 +1,86 @@
+<!-- index.html -->
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <!-- SCROLLS -->
+      <!-- load bootstrap and fontawesome via CDN -->
+      <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+      <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" />
+
+      <!-- SPELLS -->
+      <!-- load angular and angular route via CDN -->
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+          <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+      <script type="text/javascript">
+            var scotchApp  = angular.module('scotchApp', ['ngRoute']);
+            scotchApp .config(function($routeProvider){
+              $routeProvider
+
+              // route for the home page
+            .when('/', {
+                templateUrl : 'pages/home.html',
+                controller  : 'mainController'
+            })
+
+            // route for the about page
+            .when('/about', {
+                templateUrl : 'pages/about.html',
+                controller  : 'aboutController'
+            })
+
+            // route for the contact page
+            .when('/contact', {
+                templateUrl : 'pages/contact.html',
+                controller  : 'contactController'
+            });
+
+            });
+
+           
+    // create the controller and inject Angular's $scope
+    scotchApp.controller('mainController', function($scope) {
+        // create a message to display in our view
+        $scope.message = 'mainController!';
+    });
+
+    scotchApp.controller('aboutController', function($scope) {
+        $scope.message = 'aboutController';
+    });
+
+    scotchApp.controller('contactController', function($scope) {
+        $scope.message = 'contactController';
+    });
+
+
+
+
+      </script>
+    </head>
+    <body ng-app="scotchApp">
+
+        <!-- HEADER AND NAVBAR -->
+        <header>
+            <nav class="navbar navbar-default">
+            <div class="container" ng-controller="mainController">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/">Angular Routing Example</a>
+                </div>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+                    <li><a href="#about"><i class="fa fa-shield"></i> About</a></li>
+                    <li><a href="#contact"><i class="fa fa-comment"></i> Contact</a></li>
+                </ul>
+            </div>
+            </nav>
+        </header>
+
+        <!-- MAIN CONTENT AND INJECTED VIEWS -->
+        <div id="main">
+
+          <div ng-view></div>
+           {{ message }}
+        </div>
+
+    </body>
+    </html>

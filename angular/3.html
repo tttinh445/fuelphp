@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+    <head>
+        <script src="js/angular.min.js"></script>  
+    </head>
+   <body ng-app="myApp">
+        <div ng-controller="controller">
+           <div>{{hello.tittle}}  than chao ban.</div>
+           <div>Name: {{hello.name}}</div>
+           <div>Ngay sinh: {{hello.birthday}}</div>
+           <div>Trinh do: {{hello.level}}</div>
+        </div>
+        <script type="text/javascript">
+            angular.module('myApp', [])
+            .controller("controller", function($scope){
+                $scope.hello = {};
+                $scope.hello.tittle = "Nguyen binh";
+                $scope.hello.name = "Hoang anh";
+                $scope.hello.birthday = "22/10/12";
+                $scope.hello.level = "Junior";
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html ng-app="app">
+    <head>
+        <title>Upload</title>
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" />
+
+        <script src="js/angular.min.js"></script>
+        <script src="js/jquery-1.9.1.js"></script>
+        <script src="js/angular-file-upload.js"></script>
+        <script src="js/upload.js"></script>
+    </head>
+    <body>
+        <div ng-app="app">
+            <div ng-controller="AppController">
+                <input type="file" nv-file-select uploader="uploader" multiple />
+                <ul>
+                    <li ng-repeat="item in uploader.queue">
+						{{ item.file.name }}
+						 <button ng-click="item.upload()">upload</button>
+					</li>
+                </ul>
+				<input type="button" ng-click="doUpload();" value="Do Upload" />
+            </div>
+        </div>
+    </body>
+</html>
+
